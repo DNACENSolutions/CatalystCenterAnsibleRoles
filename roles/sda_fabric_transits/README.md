@@ -44,6 +44,52 @@ None
           - transit_name: "Transit-01"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/sda_fabric_transits`.
+
+- Source README: `workflows/sda_fabric_transits/README.md`
+- Source playbook: `workflows/sda_fabric_transits/playbook/sda_fabric_transits_workflow_playbook.yml`
+- Source vars example: `workflows/sda_fabric_transits/vars/sda_fabric_transits_workflow_inputs.yml`
+- Source schema: `workflows/sda_fabric_transits/schema/sda_fabric_transits_workflow_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Image-3](./images/image-3.png)
+![Fabric transit configuration in Cisco Catalyst Center UI](./images/image-1.png)
+
+## Adapted Examples
+
+### Example 1: Fabric Transits
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: sda_fabric_transits
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        sda_fabric_transits_state: "merged"
+        sda_fabric_transits_config:
+        - sda_fabric_transits:
+          - ip_transit_settings:
+              autonomous_system_number: '100'
+              routing_protocol_name: BGP
+            name: IP Transit_AS200
+            transit_type: IP_BASED_TRANSIT
+          - name: sample_transit
+            transit_site_hierarchy: Global/India
+            transit_type: IP_BASED_TRANSIT
+            ip_transit_settings:
+              routing_protocol_name: BGP
+              autonomous_system_number: '134'
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

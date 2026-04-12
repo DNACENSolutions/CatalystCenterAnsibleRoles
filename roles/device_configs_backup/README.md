@@ -44,6 +44,50 @@ None
           - device_ip: "10.0.0.1"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/device_config_backup`.
+
+- Source README: `workflows/device_config_backup/README.md`
+- Source playbook: `workflows/device_config_backup/playbook/device_config_backup_workflow_playbook.yml`
+- Source vars example: `workflows/device_config_backup/vars/device_config_backup_workflow_input.yml`
+- Source schema: `workflows/device_config_backup/schema/device_config_backup_workflow_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Hostname](./images/hostname.png)
+![Password](./images/password.png)
+
+## Adapted Examples
+
+### Example 1: Devices Backup
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: device_configs_backup
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        device_configs_backup_state: "merged"
+        device_configs_backup_config:
+        - ip_address_list:
+          - 204.1.2.1
+          collection_status:
+          - Managed
+          file_path: ./
+          unzip_backup: false
+        - ip_address_list:
+          - 204.1.2.1
+          file_path: ./
+          unzip_backup: true
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

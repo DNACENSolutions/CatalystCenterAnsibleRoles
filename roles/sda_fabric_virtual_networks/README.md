@@ -44,6 +44,55 @@ None
           - virtual_network_name: "VN-01"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/sda_virtual_networks_l2l3_gateways`.
+
+- Source README: `workflows/sda_virtual_networks_l2l3_gateways/README.md`
+- Source playbook: `workflows/sda_virtual_networks_l2l3_gateways/playbook/sda_virtual_networks_l2_l3_gateways_playbook.yml`
+- Source vars example: `workflows/sda_virtual_networks_l2l3_gateways/vars/sda_virtual_networks_l2_l3_gateways_input.yml`
+- Source schema: `workflows/sda_virtual_networks_l2l3_gateways/schema/sda_virtual_networks_l2_l3_gateways_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Create L3 Anchor](./images/create_l3_anchor.png)
+![Update L3 Anchor](./images/update_l3_anchor.png)
+
+## Adapted Examples
+
+### Example 1: SDA Fabric Virtual Networks
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: sda_fabric_virtual_networks
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        sda_fabric_virtual_networks_state: "merged"
+        sda_fabric_virtual_networks_config:
+        - fabric_vlan:
+          - vlan_name: vlan_test1
+            fabric_site_locations:
+            - site_name_hierarchy: Global/India
+              fabric_type: fabric_site
+            - site_name_hierarchy: Global/India/Chennai
+              fabric_type: fabric_zone
+            vlan_id: 1333
+            traffic_type: DATA
+        - virtual_networks:
+          - vn_name: vn_with_anchor
+            fabric_site_locations:
+            - site_name_hierarchy: Global/India
+              fabric_type: fabric_site
+            anchored_site_name: Global/India
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

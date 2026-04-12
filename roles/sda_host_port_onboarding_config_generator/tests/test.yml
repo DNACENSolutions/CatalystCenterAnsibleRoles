@@ -1,0 +1,5 @@
+---
+- hosts: local
+  gather_facts: false
+  roles:
+    - role: sda_host_port_onboarding_config_generator

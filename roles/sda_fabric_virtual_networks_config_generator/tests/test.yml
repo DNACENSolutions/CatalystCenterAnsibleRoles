@@ -1,0 +1,5 @@
+---
+- hosts: local
+  gather_facts: false
+  roles:
+    - role: sda_fabric_virtual_networks_config_generator

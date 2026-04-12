@@ -1,0 +1,5 @@
+---
+- hosts: local
+  gather_facts: false
+  roles:
+    - role: backup_and_restore_config_generator

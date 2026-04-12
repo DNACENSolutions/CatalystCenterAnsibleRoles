@@ -44,6 +44,53 @@ None
           - extranet_policy_name: "Extranet-Policy-01"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/sda_fabric_extranet_policy`.
+
+- Source README: `workflows/sda_fabric_extranet_policy/README.md`
+- Source playbook: `workflows/sda_fabric_extranet_policy/playbook/fabric_extranet_policy_playbook.yml`
+- Source vars example: `workflows/sda_fabric_extranet_policy/vars/fabric_extranet_policy_inputs.yml`
+- Source schema: `workflows/sda_fabric_extranet_policy/schema/fabric_extranet_policy_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Ext1](./images/ext1.png)
+![Ext2](./images/ext2.png)
+
+## Adapted Examples
+
+### Example 1: Extranet Policies
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: sda_extranet_policies
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        sda_extranet_policies_state: "merged"
+        sda_extranet_policies_config:
+        - extranet_policy_name: ex_policy_infra_vn_provider
+          provider_virtual_network: INFRA VN
+          subscriber_virtual_networks:
+          - DEFAULT_VN
+          - VN_1
+        - extranet_policy_name: ex_policy_default_vn_provider
+          provider_virtual_network: VN_1
+          subscriber_virtual_networks:
+          - VN_2
+          - VN_3
+          fabric_sites:
+          - Global/USA/SAN JOSE
+          - Global/USA/SAN-FRANCISCO
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

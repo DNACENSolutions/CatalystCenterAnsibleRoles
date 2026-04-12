@@ -1,0 +1,5 @@
+---
+- hosts: local
+  gather_facts: false
+  roles:
+    - role: tags_config_generator

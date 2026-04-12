@@ -1,0 +1,5 @@
+---
+- hosts: local
+  gather_facts: false
+  roles:
+    - role: ise_radius_integration_config_generator

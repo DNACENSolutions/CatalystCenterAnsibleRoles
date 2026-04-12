@@ -44,6 +44,52 @@ None
           - event_name: "Device Down"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/events_and_notifications`.
+
+- Source README: `workflows/events_and_notifications/README.md`
+- Source playbook: `workflows/events_and_notifications/playbook/events_and_notifications_playbook.yml`
+- Source vars example: `workflows/events_and_notifications/vars/events_and_notifications_destinations_inputs.yml`
+- Source schema: `workflows/events_and_notifications/schema/events_and_notifications_schema.yml`
+
+## Adapted Examples
+
+### Example 1: Events Notifications Destination And Subscription
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: events_and_notifications
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        events_and_notifications_state: "merged"
+        events_and_notifications_config:
+        - email_destination:
+            sender_email: test@cisco.com
+            recipient_email: demo@cisco.com
+            subject: Testing email destination
+            primary_smtp_config:
+              server_address: mail.cisco.com
+              port: '25'
+              smtp_type: DEFAULT
+            secondary_smtp_config:
+              server_address: outbound.cisco.com
+              port: '587'
+              smtp_type: TLS
+        - syslog_destination:
+            name: Syslog test 100
+            description: Testing syslog destination notification
+            server_address: 10.20.0.40
+            protocol: TCP
+            port: 6553
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

@@ -48,6 +48,50 @@ None
                 parent_name: "Global"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/site_hierarchy`.
+
+- Source README: `workflows/site_hierarchy/README.md`
+- Source playbook: `workflows/site_hierarchy/playbook/site_hierarchy_playbook.yml`
+- Source vars example: `workflows/site_hierarchy/vars/site_hierarchy_design_vars.yml`
+- Source schema: `workflows/site_hierarchy/schema/sites_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Site Image1](./images/site_image1.png)
+![Template Created Sites](./images/template_created_sites.png)
+
+## Adapted Examples
+
+### Example 1: Design Sites
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: site
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        site_state: "merged"
+        site_config:
+        - site:
+            area:
+              name: USA
+              parent_name: Global
+          type: area
+        - site:
+            area:
+              name: SAN JOSE
+              parent_name: Global/USA
+          type: area
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

@@ -44,6 +44,56 @@ None
           - tag_name: "Production"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/tags_manager`.
+
+- Source README: `workflows/tags_manager/README.md`
+- Source playbook: `workflows/tags_manager/playbook/tags_manager_playbook.yml`
+- Source vars example: `workflows/tags_manager/vars/tags_manager_inputs.yml`
+- Source schema: `workflows/tags_manager/schema/tags_manager_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Tag UI Page](./images/tag_UI_page.png)
+![Create tag](./images/create_tag.png)
+
+## Adapted Examples
+
+### Example 1: Tags
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: tags
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        tags_state: "merged"
+        tags_config:
+        - tag:
+            name: Server_Connected_Devices_and_Ports
+            description: Tag for devices and interfaces connected to servers
+        - tag:
+            name: Border_9400_Tag
+            description: Tag for border devices belonging to the Cisco Catalyst 9400 family.
+            device_rules:
+              rule_descriptions:
+              - rule_name: device_name
+                search_pattern: contains
+                value: Border
+                operation: ILIKE
+              - rule_name: device_series
+                search_pattern: ends_with
+                value: '9400'
+                operation: ILIKE
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

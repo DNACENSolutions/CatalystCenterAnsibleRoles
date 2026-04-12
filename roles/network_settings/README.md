@@ -44,6 +44,55 @@ None
           - dhcp_server: ["10.0.0.1"]
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/network_settings`.
+
+- Source README: `workflows/network_settings/README.md`
+- Source playbook: `workflows/network_settings/playbook/network_settings_playbook.yml`
+- Source vars example: `workflows/network_settings/vars/aaa_servers_vars.yml`
+- Source schema: `workflows/network_settings/schema/nw_settings_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![AAA Config 1](./images/aaa_1.png)
+![AAA Config 1.1](./images/aaa_1.1.png)
+
+## Adapted Examples
+
+### Example 1: Network
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: network_settings
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        network_settings_state: "merged"
+        network_settings_config:
+        - network_management_details:
+          - site_name: Global
+            settings:
+              network_aaa:
+                server_type: ISE
+                shared_secret: Maglev123
+                pan_address: 82.2.2.3
+                primary_server_address: 10.195.243.31
+                protocol: RADIUS
+              client_and_endpoint_aaa:
+                server_type: ISE
+                shared_secret: Maglev123
+                pan_address: 82.2.2.3
+                primary_server_address: 10.195.243.31
+                protocol: RADIUS
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

@@ -45,6 +45,44 @@ None
             site_name: "Global/USA/Building1"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/provision`.
+
+- Source README: `workflows/provision/README.md`
+- Source playbook: `workflows/provision/playbook/provision_workflow_playbook.yml`
+- Source vars example: `workflows/provision/vars/provision_workflow_inputs.yml`
+- Source schema: `workflows/provision/schema/provision_workflow_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Nw Profile](./images/nw_profile.png)
+![Nw Profile Feature Template](./images/nw_profile_feature_template.png)
+
+## Adapted Examples
+
+### Example 1: Provision
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: provision
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        provision_state: "merged"
+        provision_config:
+        - site_name_hierarchy: Global/USA/SAN JOSE/SJ_BLD23
+          management_ip_address: 204.1.2.5
+        - site_name_hierarchy: Global/USA/SAN JOSE/SJ_BLD21
+          management_ip_address: 137.1.4.103
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

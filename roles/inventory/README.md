@@ -44,6 +44,17 @@ None
           - device_ip: "10.0.0.1"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/inventory`.
+
+- Source README: `workflows/inventory/README.md`
+- Source playbook: `workflows/inventory/playbook/inventory_playbook.yml`
+- Source vars example: `workflows/inventory/vars/inventory_provision_devices.yml`
+- Source schema: `workflows/inventory/schema/inventory_schema.yml`
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

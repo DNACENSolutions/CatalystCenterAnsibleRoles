@@ -45,6 +45,42 @@ None
             replacement_device_serial_number: "FCW5678EFGH"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/device_replacement_rma`.
+
+- Source README: `workflows/device_replacement_rma/README.md`
+- Source playbook: `workflows/device_replacement_rma/playbook/device_replacement_rma_playbook.yml`
+- Source vars example: `workflows/device_replacement_rma/vars/device_replacement_rma_input.yml`
+- Source schema: `workflows/device_replacement_rma/schema/device_replacement_rma_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Mark Device Replacement](./images/mark_device_replacement.png)
+![Replacement](./images/replacement.png)
+
+## Adapted Examples
+
+### Example 1: RMA Devices
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: rma
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        rma_state: "merged"
+        rma_config:
+        - faulty_device_serial_number: KWC224709LV
+          replacement_device_serial_number: KWC2333037V
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

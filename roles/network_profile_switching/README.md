@@ -44,6 +44,47 @@ None
           - profile_name: "Switching-Profile-01"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/network_profile_switching`.
+
+- Source README: `workflows/network_profile_switching/README.md`
+- Source playbook: `workflows/network_profile_switching/playbook/network_profile_switching_playbook.yml`
+- Source vars example: `workflows/network_profile_switching/vars/network_profile_switching_inputs.yml`
+- Source schema: `workflows/network_profile_switching/schema/network_profile_switching_schema.yml`
+
+## Adapted Examples
+
+### Example 1: Switching Network Profile
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: network_profile_switching
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        network_profile_switching_state: "merged"
+        network_profile_switching_config:
+        - profile_name: Campus_Switching_Profile
+          day_n_templates:
+          - Campus_Switch_Config_Update
+          site_names:
+          - Global/Chennai
+          - Global/Abc
+        - profile_name: Enterprise_Switching_Profile
+          day_n_templates:
+          - Periodic_Config_Audit
+          site_names:
+          - Global/India/Chennai/Main_Office
+          - Global/India/Madurai/Branch_Office
+          - Global/USA/San Francisco/Regional_HQ
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

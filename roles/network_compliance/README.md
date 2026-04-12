@@ -44,6 +44,52 @@ None
           - device_ip: "10.0.0.1"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/network_compliance`.
+
+- Source README: `workflows/network_compliance/README.md`
+- Source playbook: `workflows/network_compliance/playbook/network_compliance_workflow_playbook.yml`
+- Source vars example: `workflows/network_compliance/vars/network_compliance_workflow_input.yml`
+- Source schema: `workflows/network_compliance/schema/network_compliance_workflow_schema.yml`
+
+## Visual Reference
+
+The following image is copied from the workflow documentation to help map the role inputs to the Catalyst Center UI or expected output.
+![Complian](./images/complian.png)
+
+## Adapted Examples
+
+### Example 1: Network Compliance
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: network_compliance
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        network_compliance_state: "merged"
+        network_compliance_config:
+        - ip_address_list:
+          - 204.1.2.2
+          - 204.1.2.1
+          - 204.1.2.3
+          - 204.1.2.4
+          site_name: Global/USA/SAN JOSE/BLD23
+          run_compliance: true
+          run_compliance_categories:
+          - INTENT
+          - RUNNING_CONFIG
+          - IMAGE
+          - PSIRT
+          sync_device_config: true
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later

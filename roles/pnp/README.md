@@ -44,6 +44,68 @@ None
           - device_serial_number: "FCW1234ABCD"
 ```
 
+<!-- BEGIN WORKFLOW README ENHANCEMENTS -->
+## Workflow Documentation Reference
+
+These examples are adapted from the workflow documentation and example assets in `workflows/plug_and_play`.
+
+- Source README: `workflows/plug_and_play/README.md`
+- Source playbook: `workflows/plug_and_play/playbook/catalyst_center_pnp_playbook.yml`
+- Source vars example: `workflows/plug_and_play/vars/catalyst_center_pnp_vars.yml`
+- Source schema: `workflows/plug_and_play/schema/plug_and_play_schema.yml`
+
+## Adapted Examples
+
+### Example 1: Network Devices
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: pnp
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        pnp_state: "merged"
+        pnp_config:
+        - device_info:
+          - serial_number: FOX2639PAYD
+            hostname: SJ-EWLC-1
+            state: Unclaimed
+            pid: C9800-40-K9
+            authorize: true
+          - serial_number: FXS2502Q2HC
+            hostname: SF-BN-2-ASR.cisco.local
+            state: Unclaimed
+            pid: ASR1001-X
+            authorize: true
+```
+
+### Example 2: Claim Router Devices
+
+```yaml
+- hosts: localhost
+  roles:
+    - role: pnp
+      vars:
+        catalystcenter_host: "{{ vault_catalystcenter_host }}"
+        catalystcenter_username: "{{ vault_catalystcenter_username }}"
+        catalystcenter_password: "{{ vault_catalystcenter_password }}"
+        pnp_state: "merged"
+        pnp_config:
+        - site_name: Global/USA/SAN-FRANCISCO/BLD_SF1
+          project_name: Onboarding Configuration
+          template_name: PnP-Devices_SF-ISR_No-Vars
+          image_name: isr4400-universalk9.17.12.02.SPA.bin
+          device_info:
+          - serial_number: FXS2502Q2HC
+            hostname: SF-BN-2-ASR.cisco.local
+            state: Unclaimed
+            pid: ASR1001-X
+```
+
+<!-- END WORKFLOW README ENHANCEMENTS -->
+
 ## License
 
 GPL-3.0-or-later
