@@ -44,9 +44,9 @@ None
         catalystcenter_host: "{{ vault_catalystcenter_host }}"
         catalystcenter_username: "{{ vault_catalystcenter_username }}"
         catalystcenter_password: "{{ vault_catalystcenter_password }}"
-        wired_campus_automation_config_generator_file_path: "tmp/wired_campus_automation_config_generator.yml"
         wired_campus_automation_config_generator_config:
-          global_filters: {}
+          - file_path: "tmp/wired_campus_automation_config_generator.yml"
+            global_filters: {}
 ```
 
 <!-- BEGIN WORKFLOW README ENHANCEMENTS -->

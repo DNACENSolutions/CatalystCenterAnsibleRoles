@@ -14,6 +14,12 @@ This role manages Wireless Design in Cisco Catalyst Center using the `wireless_d
 - `catalystcenter_host`: Catalyst Center hostname or IP address (required)
 - `catalystcenter_username`: Username for authentication (required)
 - `catalystcenter_password`: Password for authentication (required)
+- `catalystcenter_verify`: SSL certificate verification (default: `false`)
+- `catalystcenter_port`: API port (default: `443`)
+- `catalystcenter_version`: Catalyst Center version (default: `2.3.7.6`)
+- `catalystcenter_debug`: Enable debug mode (default: `false`)
+- `catalystcenter_log_level`: Logging level (default: `INFO`)
+- `catalystcenter_log`: Enable logging (default: `false`)
 
 ### Role-Specific Variables
 - `wireless_design_state`: Desired state - `merged` or `deleted` (default: `merged`)

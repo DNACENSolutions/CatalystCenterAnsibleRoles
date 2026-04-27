@@ -5,7 +5,7 @@ catalystcenter_username: ""
 catalystcenter_password: ""
 catalystcenter_verify: false
 catalystcenter_port: 443
-catalystcenter_version: "2.3.7.6"
+catalystcenter_version: "2.3.7.9"
 catalystcenter_debug: false
 catalystcenter_log_level: "INFO"
 catalystcenter_log: false
@@ -15,7 +15,7 @@ inventory_config_generator_catalystcenter_port: "443"
 inventory_config_generator_catalystcenter_username: "admin"
 inventory_config_generator_catalystcenter_password: null
 inventory_config_generator_catalystcenter_verify: true
-inventory_config_generator_catalystcenter_version: "2.3.7.6"
+inventory_config_generator_catalystcenter_version: "2.3.7.9"
 inventory_config_generator_catalystcenter_debug: false
 inventory_config_generator_catalystcenter_log_level: "WARNING"
 inventory_config_generator_catalystcenter_log_file_path: "catalystcenter.log"

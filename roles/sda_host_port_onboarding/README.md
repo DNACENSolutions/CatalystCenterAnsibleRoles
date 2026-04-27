@@ -24,6 +24,7 @@ This role manages SDA Host Port Onboarding in Cisco Catalyst Center using the `s
 ### Role-Specific Variables
 - `sda_host_port_onboarding_state`: Desired state - `merged` or `deleted` (default: `merged`)
 - `sda_host_port_onboarding_config_verify`: Verify configuration after applying (default: `false`)
+- `sda_host_port_onboarding_sda_fabric_port_channel_limit`: Maximum number of port channels processed in a single API batch (default: `20`)
 - `sda_host_port_onboarding_config`: List of SDA host port onboarding configurations (required)
 
 ## Dependencies

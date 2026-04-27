@@ -23,7 +23,7 @@ This role manages Path Trace in Cisco Catalyst Center using the `path_trace_work
 
 ### Role-Specific Variables
 - `path_trace_state`: Desired state - `merged` or `deleted` (default: `merged`)
-- `path_trace_config_verify`: Verify configuration after applying (default: `false`)
+- `path_trace_config_verify`: Verify configuration after applying (default: `true`)
 - `path_trace_config`: List of path trace configurations (required)
 
 ## Dependencies

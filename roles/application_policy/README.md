@@ -23,7 +23,7 @@ This role manages Application Policy configurations in Cisco Catalyst Center usi
 
 ### Role-Specific Variables
 - `application_policy_state`: Desired state - `merged` or `deleted` (default: `merged`)
-- `application_policy_config_verify`: Verify configuration after applying (default: `false`)
+- `application_policy_config_verify`: Verify configuration after applying (default: `true`)
 - `application_policy_config`: List of application policy configurations (required)
 
 ## Dependencies

@@ -24,6 +24,8 @@ This role manages SDA Fabric Virtual Networks in Cisco Catalyst Center using the
 ### Role-Specific Variables
 - `sda_fabric_virtual_networks_state`: Desired state - `merged` or `deleted` (default: `merged`)
 - `sda_fabric_virtual_networks_config_verify`: Verify configuration after applying (default: `false`)
+- `sda_fabric_virtual_networks_sda_fabric_vlan_limit`: Maximum number of fabric VLANs processed per API batch (default: `20`)
+- `sda_fabric_virtual_networks_sda_fabric_gateway_limit`: Maximum number of anycast gateways processed per API batch (default: `20`)
 - `sda_fabric_virtual_networks_config`: List of SDA fabric virtual networks configurations (required)
 
 ## Dependencies

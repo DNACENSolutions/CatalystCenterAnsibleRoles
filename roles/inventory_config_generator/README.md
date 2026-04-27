@@ -57,9 +57,9 @@ None
         catalystcenter_host: "{{ vault_catalystcenter_host }}"
         catalystcenter_username: "{{ vault_catalystcenter_username }}"
         catalystcenter_password: "{{ vault_catalystcenter_password }}"
-        inventory_config_generator_file_path: "tmp/inventory_config_generator.yml"
         inventory_config_generator_config:
-          global_filters: {}
+          - file_path: "tmp/inventory_config_generator.yml"
+            global_filters: {}
 ```
 
 <!-- BEGIN WORKFLOW README ENHANCEMENTS -->
@@ -85,7 +85,8 @@ These examples are adapted from the workflow documentation and example assets in
         catalystcenter_username: "{{ vault_catalystcenter_username }}"
         catalystcenter_password: "{{ vault_catalystcenter_password }}"
         inventory_config_generator_state: "gathered"
-        inventory_config_generator_file_path: "/tmp/inventory_complete_config.yml"
+        inventory_config_generator_config:
+          - file_path: "/tmp/inventory_complete_config.yml"
 ```
 
 ### Example 2: Filtered export 2
@@ -99,25 +100,25 @@ These examples are adapted from the workflow documentation and example assets in
         catalystcenter_username: "{{ vault_catalystcenter_username }}"
         catalystcenter_password: "{{ vault_catalystcenter_password }}"
         inventory_config_generator_state: "gathered"
-        inventory_config_generator_file_path: "/tmp/inventory_device_details_filtered.yml"
         inventory_config_generator_config:
-          component_specific_filters:
-            components_list:
-            - device_details
-            device_details:
-            - type: NETWORK_DEVICE
-              role:
-              - ACCESS
-              - CORE
-              snmp_version: v2c
-              cli_transport: ssh
-          global_filters:
-            ip_address_list:
-            - 10.1.1.1
-            - 10.1.1.2
-            hostname_list:
-            - dist-sw-1
-            - access-sw-1
+          - file_path: "/tmp/inventory_device_details_filtered.yml"
+            component_specific_filters:
+              components_list:
+              - device_details
+              device_details:
+              - type: NETWORK_DEVICE
+                role:
+                - ACCESS
+                - CORE
+                snmp_version: v2c
+                cli_transport: ssh
+            global_filters:
+              ip_address_list:
+              - 10.1.1.1
+              - 10.1.1.2
+              hostname_list:
+              - dist-sw-1
+              - access-sw-1
 ```
 
 <!-- END WORKFLOW README ENHANCEMENTS -->

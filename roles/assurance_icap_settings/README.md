@@ -23,7 +23,7 @@ This role manages Assurance ICAP Settings in Cisco Catalyst Center using the `as
 
 ### Role-Specific Variables
 - `assurance_icap_settings_state`: Desired state - `merged` or `deleted` (default: `merged`)
-- `assurance_icap_settings_config_verify`: Verify configuration after applying (default: `false`)
+- `assurance_icap_settings_config_verify`: Verify configuration after applying (default: `true`)
 - `assurance_icap_settings_config`: List of assurance ICAP settings configurations (required)
 
 ## Dependencies

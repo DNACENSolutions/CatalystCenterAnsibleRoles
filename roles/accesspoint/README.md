@@ -24,6 +24,7 @@ This role manages Access Point configurations in Cisco Catalyst Center using the
 ### Role-Specific Variables
 - `accesspoint_state`: Desired state - `merged` or `deleted` (default: `merged`)
 - `accesspoint_config_verify`: Verify configuration after applying (default: `false`)
+- `accesspoint_next_task_after_interval`: Delay in seconds between AP provisioning and the follow-up update task (default: `5`)
 - `accesspoint_config`: List of access point configurations (required)
 
 ## Dependencies

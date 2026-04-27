@@ -43,9 +43,9 @@ None
         catalystcenter_host: "{{ vault_catalystcenter_host }}"
         catalystcenter_username: "{{ vault_catalystcenter_username }}"
         catalystcenter_password: "{{ vault_catalystcenter_password }}"
-        rma_config_generator_file_path: "tmp/rma_config_generator.yml"
         rma_config_generator_config:
-          global_filters: {}
+          - file_path: "tmp/rma_config_generator.yml"
+            global_filters: {}
 ```
 
 <!-- BEGIN WORKFLOW README ENHANCEMENTS -->
